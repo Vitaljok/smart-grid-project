@@ -73,10 +73,8 @@ for tp in self.v_power:
 The energy costs for individual timestamps are calculated as a product between consumed/produced power at given timestamp and the corresponding price of the electricity.
 
 ```python
-self.v_costs = [
-    self.v_power[ts] * self.prices[ts] 
-    for ts in range(self.time_horizon)
-]
+for ts in range(self.time_horizon):
+    self.v_costs[ts] = v_buy[ts] * self.buy_prices[ts] + v_sell[ts] * self.sell_prices[ts]
 ```
 
 Optimization objective is a sum of all costs for the whole time horizon.
@@ -143,7 +141,7 @@ self.v_power = [
 
 ## Battery
 
-Energy storage system (battery) is implemented similar other elements. It consists of actual power profile for the whole time horizon constrained by maximum power inflow/outflow.
+Energy storage system (battery) is implemented similar to other elements. It consists of actual power profile for the whole time horizon constrained by maximum power inflow/outflow.
 
 ```python
 self.v_power = [
@@ -166,6 +164,10 @@ for ts in range(time_horizon):
         4 * self.start_level + sum(self.v_power[:ts]) == 4 * self.v_level[ts]
     )
 ```
+
+The battery model implements two distinct modes: 
+- with assumption of 100% charge/discharge efficiency (fast);
+- with distinct charge and discharge efficiency coefficients (slow).
 
 # Experiments
 
