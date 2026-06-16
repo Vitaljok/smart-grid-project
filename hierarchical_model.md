@@ -30,7 +30,7 @@ inv3 <--> bess3["BESS #3"]
 
 *BESSes* operate under number of constraints, such as energy capacity, max charge/discharge power, cycles limit and efficiency.
   - *BESS #1* has mediocre parameters;
-  - *BESS #2* is almost fully charged high performance battery (e.g. Tesla), change level at time horizon is not defined;
-  - *BESS #3* is almost empty high capacity battery (e.g. Tesla), expected to be fully charged at time horizon;
+  - *BESS #2* is almost fully charged high performance battery (e.g. Tesla), charge level at time horizon is not defined;
+  - *BESS #3* is almost empty high performance battery (e.g. Tesla), expected to be fully charged at time horizon;
 
 The example is meant to demonstrate energy transfer between BESSes with power exceeding inverter's output power, but within its internal limits. Same goes for collector level energy transfer between inverters and ST.
